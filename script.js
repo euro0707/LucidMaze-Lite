@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const logButton = document.getElementById('log-button');
 
     let score = 0;
+    let scoreTimer;
     let scoreInterval;
     let correctRoute = []; // 今回のゲームの正解ルート
     const allPossibleRoutes = [
@@ -18,13 +19,15 @@ document.addEventListener('DOMContentLoaded', () => {
     let selectedIndices = [];
 
     function initializeGame() {
+        // 正解ルートをランダムに選択
+        correctRoute = allPossibleRoutes[Math.floor(Math.random() * allPossibleRoutes.length)];
+        console.log("Correct route for this game:", correctRoute); // デバッグ用に正解ルートをコンソールに表示
+        
         score = 0;
         updateScoreDisplay();
         createGrid();
         startScoring();
         completeButton.style.display = 'none'; // 最初は完了ボタンを隠す
-        // 正解ルートをランダムに選択
-        correctRoute = allPossibleRoutes[Math.floor(Math.random() * allPossibleRoutes.length)];
     }
 
     function createGrid() {
@@ -34,6 +37,35 @@ document.addEventListener('DOMContentLoaded', () => {
             cell.classList.add('grid-cell');
             cell.dataset.index = i; // クリックされたセルを特定するためのインデックス
             cell.textContent = '未選択';
+
+            cell.addEventListener('click', () => {
+                // 既にクリア済みの場合は何もしない
+                if (completeButton.style.display === 'block') {
+                    return;
+                }
+
+                const index = parseInt(cell.dataset.index, 10);
+
+                // クリックしたタイルが正解ルートに含まれているかチェック
+                if (correctRoute.includes(index)) {
+                    // 正解タイルの場合、選択状態をトグル
+                    cell.classList.toggle('selected');
+                    cell.textContent = cell.classList.contains('selected') ? '選択済' : '未選択';
+                    checkSolution(); // 正解が揃ったかチェック
+                } else {
+                    // 不正解タイルの場合
+                    // 1. スコアにペナルティを加算
+                    score += 3;
+                    updateScoreDisplay();
+
+                    // 2. 赤く点滅させる
+                    cell.classList.add('error-flash');
+                    setTimeout(() => {
+                        cell.classList.remove('error-flash');
+                    }, 500); // 0.5秒後にアニメーションクラスを削除
+                }
+            });
+
             gridContainer.appendChild(cell);
         }
     }
@@ -50,20 +82,12 @@ document.addEventListener('DOMContentLoaded', () => {
         scoreDisplay.textContent = score;
     }
 
-    gridContainer.addEventListener('click', (e) => {
-        if (e.target.classList.contains('grid-cell')) {
-            e.target.classList.toggle('selected');
-            e.target.textContent = e.target.classList.contains('selected') ? '選択済' : '未選択';
-            checkSolution();
-        }
-    });
-
     function checkSolution() {
         const selectedCells = document.querySelectorAll('.grid-cell.selected');
         const selectedIndexes = Array.from(selectedCells).map(cell => parseInt(cell.dataset.index));
 
-        // 選択されたインデックスをソートして、正解ルートと比較
-        const isCorrect = JSON.stringify(selectedIndexes.sort((a, b) => a - b)) === JSON.stringify(correctRoute.sort((a, b) => a - b));
+        // 配列の順序に依存しない、より堅牢な比較方法に変更
+        const isCorrect = correctRoute.length === selectedIndexes.length && correctRoute.every(index => selectedIndexes.includes(index));
 
         if (isCorrect) {
             completeButton.style.display = 'block';

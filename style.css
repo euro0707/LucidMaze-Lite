@@ -82,6 +82,17 @@ header h1 {
     border-color: #777;
 }
 
+.grid-cell.error-flash {
+    animation: flash-red 0.5s ease-in-out;
+}
+
+@keyframes flash-red {
+    50% {
+        background-color: #e74c3c; /* 間違いを示す赤色 */
+        border-color: #c0392b;
+    }
+}
+
 footer {
     text-align: center;
     margin-top: 20px;
