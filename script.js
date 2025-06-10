@@ -5,8 +5,17 @@ document.addEventListener('DOMContentLoaded', () => {
     const logButton = document.getElementById('log-button');
 
     let score = 0;
-    let scoreTimer;
-    const correctRoute = [1, 4, 7]; // 正解ルート (中央縦列)
+    let scoreInterval;
+    let correctRoute = []; // 今回のゲームの正解ルート
+    const allPossibleRoutes = [
+        // 横のライン
+        [0, 1, 2], [3, 4, 5], [6, 7, 8],
+        // 縦のライン
+        [0, 3, 6], [1, 4, 7], [2, 5, 8],
+        // 斜めのライン
+        [0, 4, 8], [2, 4, 6]
+    ];
+    let selectedIndices = [];
 
     function initializeGame() {
         score = 0;
@@ -14,6 +23,8 @@ document.addEventListener('DOMContentLoaded', () => {
         createGrid();
         startScoring();
         completeButton.style.display = 'none'; // 最初は完了ボタンを隠す
+        // 正解ルートをランダムに選択
+        correctRoute = allPossibleRoutes[Math.floor(Math.random() * allPossibleRoutes.length)];
     }
 
     function createGrid() {
