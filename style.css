@@ -1,0 +1,230 @@
+.game-container body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(to bottom, #111, #333);
+    color: #f0f0f0;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.game-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.3);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.5);
+    width: 90%;
+    max-width: 400px;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+header h1 {
+    color: #61dafb; /* A light blue, for example */
+}
+
+.score-container p {
+    font-size: 1.2em;
+    margin: 5px 0;
+    color: #fff;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, 80px);
+    grid-template-rows: repeat(3, 80px);
+    gap: 5px;
+    border: 2px solid #333;
+    padding: 5px;
+    background-color: #f0f0f0;
+    margin-bottom: 20px;
+}
+
+.grid-cell {
+    width: 80px;
+    height: 80px;
+    background-color: #444; /* Unselected state */
+    border: 2px solid #666;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.8em; /* Adjusted for potential text */
+    color: #ccc;
+    cursor: pointer;
+    user-select: none; /* Prevents text selection on tap */
+    transition: background-color 0.3s, border-color 0.3s;
+    box-sizing: border-box; /* Ensures padding and border are included in the element's total width and height */
+}
+
+.grid-cell.selected {
+    background-color: #61dafb; /* Selected state */
+    border-color: #81eaff;
+    color: #111;
+}
+
+.grid-cell:not(.selected):hover {
+    background-color: #555;
+    border-color: #777;
+}
+
+footer {
+    text-align: center;
+    margin-top: 20px;
+    width: 100%;
+    display: flex;
+    flex-direction: column; /* Stack buttons vertically */
+    gap: 10px; /* Space between buttons */
+}
+
+.action-button {
+    padding: 10px 20px;
+    font-size: 1.1em;
+    cursor: pointer;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+#complete-button {
+    background-color: #4CAF50; /* Green */
+}
+
+#complete-button:hover {
+    background-color: #45a049;
+}
+
+#log-button {
+    background-color: #007bff; /* Blue */
+}
+
+#log-button:hover {
+    background-color: #0069d9;
+}
+
+/* Result Screen Styles */
+.result-container {
+    background-color: rgba(0, 0, 0, 0.4);
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.7);
+    width: 90%;
+    max-width: 450px;
+    text-align: center;
+}
+
+.result-container .score-text {
+     font-size: 2em;
+     margin-bottom: 20px;
+}
+
+.result-container .thinking-type-text {
+    font-size: 1.5em;
+    color: #a0a0a0;
+    margin-bottom: 30px;
+}
+
+.result-buttons a, .result-buttons button {
+    display: block;
+    width: 80%;
+    margin: 15px auto;
+    padding: 12px 20px;
+    font-size: 1.1em;
+    color: white;
+    text-decoration: none;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.result-buttons .retry-button {
+    background-color: #007bff;
+}
+
+.result-buttons .retry-button:hover {
+    background-color: #0056b3;
+}
+
+.result-buttons .home-button {
+    background-color: #6c757d;
+}
+
+.result-buttons .home-button:hover {
+    background-color: #545b62;
+}
+
+/* Home Screen Styles */
+.home-container {
+    background-color: rgba(0, 0, 0, 0.3);
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.5);
+    text-align: center;
+}
+
+.home-container h1 {
+    color: #61dafb;
+    margin-bottom: 30px;
+}
+
+.home-container p {
+    margin-bottom: 25px;
+}
+
+.home-container a {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 1.2em;
+    transition: background-color 0.3s;
+}
+
+.home-container a:hover {
+    background-color: #0056b3;
+}
+
+/* Home Screen Styles */
+.home-container {
+    background-color: rgba(0, 0, 0, 0.3);
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.5);
+    text-align: center;
+}
+
+.home-container h1 {
+    color: #61dafb;
+    margin-bottom: 30px;
+}
+
+.home-container p {
+    margin-bottom: 25px;
+}
+
+.home-container a {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 1.2em;
+    transition: background-color 0.3s;
+}
+
+.home-container a:hover {
+    background-color: #0056b3;
+}
