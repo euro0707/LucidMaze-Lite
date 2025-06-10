@@ -33,9 +33,15 @@ header h1 {
 }
 
 .score-container p {
-    font-size: 1.2em;
-    margin: 5px 0;
-    color: #fff;
+    margin: 0;
+    font-size: 1.5em;
+}
+
+#instruction-text {
+    color: #cccccc;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    font-size: 1.1em;
 }
 
 .grid-container {
@@ -66,9 +72,9 @@ header h1 {
 }
 
 .grid-cell.selected {
-    background-color: #61dafb; /* Selected state */
-    border-color: #81eaff;
-    color: #111;
+    background-color: #a0d4ff; /* Selected state - more vibrant blue */
+    border-color: #c0e5ff;
+    color: #000;
 }
 
 .grid-cell:not(.selected):hover {
