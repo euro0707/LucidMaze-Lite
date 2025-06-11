@@ -9,8 +9,37 @@
 <body>
     <div class="home-container">
         <h1>LucidMaze Lite</h1>
-        <p>下のボタンからゲームを開始してください。</p>
-        <a href="index.html">ゲーム開始</a>
+        <p>難易度を選択してゲームを開始してください。</p>
+
+        <div class="difficulty-selector">
+            <button class="difficulty-btn" data-difficulty="easy">かんたん</button>
+            <button class="difficulty-btn" data-difficulty="normal">ふつう</button>
+            <button class="difficulty-btn" data-difficulty="hard">むずかしい</button>
+        </div>
+
+        <a href="#" id="start-game-link" class="start-button disabled">ゲーム開始</a>
     </div>
+
+    <script>
+        const difficultyButtons = document.querySelectorAll('.difficulty-btn');
+        const startGameLink = document.getElementById('start-game-link');
+        let selectedDifficulty = null;
+
+        difficultyButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // 他ボタンの選択状態を解除
+                difficultyButtons.forEach(btn => btn.classList.remove('selected'));
+                // クリックしたボタンを選択状態にする
+                button.classList.add('selected');
+                
+                // 難易度を保存
+                selectedDifficulty = button.dataset.difficulty;
+                
+                // ゲーム開始ボタンを有効化し、リンク先を設定
+                startGameLink.classList.remove('disabled');
+                startGameLink.href = `index.html?difficulty=${selectedDifficulty}`;
+            });
+        });
+    </script>
 </body>
 </html>

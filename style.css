@@ -232,3 +232,38 @@ footer {
 .home-container a:hover {
     background-color: #0056b3;
 }
+
+.difficulty-selector {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 25px;
+}
+
+.difficulty-btn {
+    padding: 10px 20px;
+    font-size: 1em;
+    color: #333;
+    background-color: #e0e0e0;
+    border: 2px solid #b0b0b0;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+.difficulty-btn:hover {
+    background-color: #cccccc;
+    border-color: #a0a0a0;
+}
+
+.difficulty-btn.selected {
+    background-color: #007bff;
+    color: white;
+    border-color: #0056b3;
+}
+
+.start-button.disabled {
+    background-color: #6c757d;
+    opacity: 0.6;
+    cursor: not-allowed;
+}
