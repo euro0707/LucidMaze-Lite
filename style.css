@@ -2,8 +2,8 @@
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
     padding: 0;
-    background: linear-gradient(to bottom, #111, #333);
-    color: #f0f0f0;
+    background: linear-gradient(to bottom, #f4f4f4, #e0e0e0); /* Light gray gradient */
+    color: #333333; /* Dark gray default text */
     min-height: 100vh;
     display: flex;
     justify-content: center;
@@ -14,10 +14,10 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: rgba(0, 0, 0, 0.3);
+    background-color: #ffffff; /* White background */
     padding: 20px;
     border-radius: 10px;
-    box-shadow: 0 0 15px rgba(0,0,0,0.5);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Lighter shadow */
     width: 90%;
     max-width: 400px;
 }
@@ -29,19 +29,21 @@ header {
 }
 
 header h1 {
-    color: #61dafb; /* A light blue, for example */
+    color: #0056b3; /* Darker blue, consistent with buttons */
 }
 
 .score-container p {
     margin: 0;
-    font-size: 1.5em;
+    font-size: 1.2em;
 }
 
 #instruction-text {
-    color: #cccccc;
-    margin-top: 15px;
-    margin-bottom: 15px;
+    color: #333333; /* Dark gray text */
+    font-weight: bold;
     font-size: 1.1em;
+    text-shadow: none; /* Remove shadow for light background */
+    margin-top: 10px;
+    margin-bottom: 15px;
 }
 
 .grid-container {
@@ -49,26 +51,26 @@ header h1 {
     grid-template-columns: repeat(3, 80px);
     grid-template-rows: repeat(3, 80px);
     gap: 5px;
-    border: 2px solid #333;
+    border: 2px solid #cccccc; /* Lighter border */
     padding: 5px;
-    background-color: #f0f0f0;
+    background-color: #f0f0f0; /* Keep light background */
     margin-bottom: 20px;
 }
 
 .grid-cell {
     width: 80px;
     height: 80px;
-    background-color: #444; /* Unselected state */
-    border: 2px solid #666;
+    background-color: #e0e0e0; /* Light gray background */
+    border: 2px solid #b0b0b0; /* Medium gray border */
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 0.8em; /* Adjusted for potential text */
-    color: #ccc;
+    font-size: 0.8em;
+    color: #333333; /* Dark gray text */
     cursor: pointer;
-    user-select: none; /* Prevents text selection on tap */
+    user-select: none;
     transition: background-color 0.3s, border-color 0.3s;
-    box-sizing: border-box; /* Ensures padding and border are included in the element's total width and height */
+    box-sizing: border-box;
 }
 
 .grid-cell.selected {
@@ -78,8 +80,8 @@ header h1 {
 }
 
 .grid-cell:not(.selected):hover {
-    background-color: #555;
-    border-color: #777;
+    background-color: #cccccc; /* Slightly darker light gray */
+    border-color: #a0a0a0; /* Slightly darker border */
 }
 
 .grid-cell.error-flash {
@@ -130,13 +132,30 @@ footer {
 
 /* Result Screen Styles */
 .result-container {
-    background-color: rgba(0, 0, 0, 0.4);
+    background-color: #ffffff; /* White background */
     padding: 40px;
     border-radius: 10px;
-    box-shadow: 0 0 20px rgba(0,0,0,0.7);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Lighter shadow */
     width: 90%;
     max-width: 450px;
     text-align: center;
+}
+
+.result-icon {
+    width: 80px;
+    height: 80px;
+    background-color: #cccccc; /* Medium light gray */
+    border-radius: 50%;
+    margin: 0 auto 20px;
+    /* 将来的にここにSVGや画像を表示することもできます */
+}
+
+.result-container p {
+    color: #333333; /* Dark gray text */
+    font-size: 1.3em;
+    font-weight: bold;
+    margin-bottom: 30px;
+    text-shadow: none; /* Remove shadow for light background */
 }
 
 .result-container .score-text {
@@ -157,6 +176,7 @@ footer {
     padding: 12px 20px;
     font-size: 1.1em;
     color: white;
+    font-weight: bold; /* 文字を太字に */
     text-decoration: none;
     border: none;
     border-radius: 5px;
@@ -165,11 +185,11 @@ footer {
 }
 
 .result-buttons .retry-button {
-    background-color: #007bff;
+    background-color: #0056b3; /* 通常時の背景色を濃く */
 }
 
 .result-buttons .retry-button:hover {
-    background-color: #0056b3;
+    background-color: #004085; /* ホバー時の背景色をさらに濃く */
 }
 
 .result-buttons .home-button {
@@ -182,48 +202,15 @@ footer {
 
 /* Home Screen Styles */
 .home-container {
-    background-color: rgba(0, 0, 0, 0.3);
+    background-color: #ffffff; /* White background */
     padding: 40px;
     border-radius: 10px;
-    box-shadow: 0 0 15px rgba(0,0,0,0.5);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Lighter shadow */
     text-align: center;
 }
 
 .home-container h1 {
-    color: #61dafb;
-    margin-bottom: 30px;
-}
-
-.home-container p {
-    margin-bottom: 25px;
-}
-
-.home-container a {
-    display: inline-block;
-    padding: 10px 20px;
-    background-color: #007bff;
-    color: white;
-    text-decoration: none;
-    border-radius: 5px;
-    font-size: 1.2em;
-    transition: background-color 0.3s;
-}
-
-.home-container a:hover {
-    background-color: #0056b3;
-}
-
-/* Home Screen Styles */
-.home-container {
-    background-color: rgba(0, 0, 0, 0.3);
-    padding: 40px;
-    border-radius: 10px;
-    box-shadow: 0 0 15px rgba(0,0,0,0.5);
-    text-align: center;
-}
-
-.home-container h1 {
-    color: #61dafb;
+    color: #0056b3; /* Darker blue, consistent with buttons */
     margin-bottom: 30px;
 }
 
